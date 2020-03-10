@@ -2,7 +2,10 @@
 
 
 
+
+
 EN LA CONSOLA DE GIT BASH 
+1. UBICANDONOS EN LA CARPETA DE MI_ PROYECTO SE CREA UN DIRECTORIO DENOMINADO  SESION03 Y SE COPIA LA CARPETA DE MIS DATOS A SESION03
 
   478  cd desktop
   479  pwd
@@ -26,7 +29,12 @@ EN LA CONSOLA DE GIT BASH
   497  ls
 
 
-EN LA TEMINAL DE MINICONDA
+EN LA TEMINAL DE MYCLI (MINICONDA))
+SE INGRESA CON LA RUTA
+mycli -u root -h ec2-54-213-51-169.us-west-2.compute.amazonaws.com --LOAD - INFILE TRUE
+
+SE MUESTRAN LAS BASES DE DATOS CONTENIDAS
+
 
 (none)> show databases;
 +--------------------+
@@ -52,9 +60,17 @@ EN LA TEMINAL DE MINICONDA
 
 16 rows in set
 Time: 0.169s
+
+SE ELIGE LA BASE DE DATOS DONDE SE VA  A TRABAJAR
+
+
 (none)> use Rosalia_TP;
 You are now connected to database "Rosalia_TP" as user "root"
 Time: 0.083s
+
+SE CREAN LAS TABLAS RANKING Y TIMESDATA CUYA INFORMACION SE ENCUENTRA CONTENIDA EN LOS ARCHIVOS csv  DE LA CARRPETA SESION03
+
+
 Rosalia_TP> create table ranking(
             world_rank int primary key,
             institution varchar (30),
@@ -70,35 +86,10 @@ Rosalia_TP> create table ranking(
             patents int,
             score int,
             year_ int);
-Query OK, 0 rows affected
-Time: 0.155s
-Rosalia_TP> show tables;
-+----------------------+
-| Tables_in_Rosalia_TP |
-+----------------------+
-| VANILLA_TP           |
-| ranking              |
-+----------------------+
-Rosalia_TP> show tables;
-+----------------------+
-| Tables_in_Rosalia_TP |
-+----------------------+
-| VANILLA_TP           |
-| ranking              |
-+----------------------+
-2 rows in set
-Time: 0.174s
 
 
+SE VERIFICA QUE SE HAYA CARGADO LA INFORMACION CORRECTAMENTE 
 
-Rosalia_TP> load data local infile "C:/Users/USER/Desktop/Mi_Proyecto/sesion03/
-            Mis_Datos/cwurData.csv" into table ranking fields terminated by ","
-            ;
-Query OK, 1001 rows affected
-Time: 2.743s
-Rosalia_TP> select
-(1064, "You have an error in your SQL syntax; check the manual that corresponds
-to your MariaDB server version for the right syntax to use near '' at line 1")
 Rosalia_TP> select *from ranking;
 +------------+--------------------------------+----------------------+----------
 -----+----------------------+-------------------+--------------------+----------
